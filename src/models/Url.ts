@@ -17,6 +17,5 @@ const urlSchema = new Schema<IUrl>({
 
 urlSchema.index({createdAt : -1});
 
-const Url = mongoose.model<IUrl>('Url', urlSchema);
+export const Url = mongoose.model<IUrl>('Url', urlSchema);
 
-export default Url;
