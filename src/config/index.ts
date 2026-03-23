@@ -17,7 +17,7 @@ function loadEnv() {
 loadEnv();
 
 export const serverConfig: ServerConfig = {
-    PORT: Number(process.env.PORT) || 3001,
+    PORT: Number(process.env.PORT) || 7777,
     MONGO_URI: process.env.MONGO_URI || "",
     REDIS_URL: process.env.REDIS_URL || "",
     REDIS_COUNTER_KEY: process.env.REDIS_COUNTER_KEY || "",

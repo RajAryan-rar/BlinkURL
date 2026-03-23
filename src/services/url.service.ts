@@ -41,7 +41,10 @@ export class UrlService {
 
         if(originalUrl) {
             await this.urlRepository.incrementClicks(shortUrl);
-            return originalUrl
+            return {
+                originalUrl : originalUrl,
+                shortUrl
+            }
         }
 
         const url = await this.urlRepository.findByShortUrl(shortUrl);
@@ -56,6 +59,10 @@ export class UrlService {
             originalUrl: url.originalUrl,
             shortUrl
         }
+    }
 
+    async incrementClicks(shortUrl: string) {
+        await this.urlRepository.incrementClicks(shortUrl);
+        return;
     }
 }
