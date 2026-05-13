@@ -11,9 +11,11 @@ import * as trpcExpress from '@trpc/server/adapters/express';
 
 import { trpcRouter } from './routers/trpc';
 import { redirectURL } from './controllers/url.controller';
+import cors from 'cors';
+
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
 /**
@@ -24,11 +26,12 @@ app.use(attachCorrelationIdMiddleware);
 
 app.use('/trpc', trpcExpress.createExpressMiddleware({
     router: trpcRouter
-}))
-app.use('/:shortUrl', redirectURL);
+}));
 
 app.use('/api/v1', v1Router);
-app.use('/api/v2', v2Router); 
+app.use('/api/v2', v2Router);
+
+app.use('/:shortUrl', redirectURL);
 
 
 /**

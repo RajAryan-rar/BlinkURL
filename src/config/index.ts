@@ -16,10 +16,12 @@ function loadEnv() {
 
 loadEnv();
 
+const port = Number(process.env.PORT) || 7777;
+
 export const serverConfig: ServerConfig = {
-    PORT: Number(process.env.PORT) || 7777,
+    PORT: port,
     MONGO_URI: process.env.MONGO_URI || "",
     REDIS_URL: process.env.REDIS_URL || "",
     REDIS_COUNTER_KEY: process.env.REDIS_COUNTER_KEY || "",
-    BASE_URL: process.env.BASE_URL || "http://localhost:3000"
+    BASE_URL: process.env.BASE_URL || `http://localhost:${port}`
 };
